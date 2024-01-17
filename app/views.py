@@ -15,8 +15,7 @@ def home(request):
 def CreateRecipe(request):
     form = RecipeForm()
     if request.method == "POST":
-        form = RecipeForm(request.POST,request.FILES)
-        print(request.FILES)
+        form = RecipeForm(request.POST,request.FILES) 
         if form.is_valid():
             form.save()
             return HttpResponse("Data Saved...")
@@ -29,8 +28,7 @@ def CreateRecipe(request):
 
 
 def Display(request):
-    obj = Recipe.objects.all()
-    print(obj)
+    obj = Recipe.objects.all() 
     template_name = "app/display.html"
     context = {'data' : obj}
     return render(request,template_name,context)
