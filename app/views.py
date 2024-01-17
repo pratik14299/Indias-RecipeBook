@@ -13,12 +13,12 @@ def home(request):
 
 @login_required(login_url="login_url")
 def CreateRecipe(request):
-    form = RecipeForm()
+    form = RecipeForm() 
     if request.method == "POST":
         form = RecipeForm(request.POST,request.FILES) 
         if form.is_valid():
             form.save()
-            return HttpResponse("Data Saved...")
+            return redirect("show_url")
         else:
             return HttpResponse(f"Error: {form.errors}")
         
