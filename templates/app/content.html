@@ -1,0 +1,22 @@
+<!--content.html -->
+{% extends "base.html" %}
+
+{% block title %}
+    <title>{{ i.Title }}</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <center><h5 class="card-title mb-4" style="font-family: 'Your Cool Font'; color: #3366ff; font-weight: bold;">
+                    {{ data.Title }}
+                </h5> </center>
+                <div class = "container-fluid">
+                   <center><img src="{{data.image.url}}" alt="Not Available" style ="height: 230px;"></center> 
+                </div>
+                <p class="card-text">{{ data.Discreption|safe }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

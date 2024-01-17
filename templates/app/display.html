@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{%load static%} 
+{% block title%}
+        <title>create</title>
+{% endblock%}
+
+{% block content%} 
+<div class="container">
+    <div class="row"> 
+        {% for i in data %}
+           <div class="col-lg-6 mb-4"> 
+                        <div class="card">  
+                            {% if i.image %}
+                               <img src="{{ i.image.url }}" alt="Your Image" height="300px">
+                            {% else %}
+                                <p>No image available</p>
+                            {% endif %}
+                            <div class="card-body"> 
+                                <h5 class="card-title">{{i.Title}}</h5> 
+                                <p class="card-text"> 
+                                    {{ i.Discreption|safe|truncatewords:"15"|linebreaks }}
+                                    <a href="{% url 'content_url' id=i.id %}">read more</a>
+                                     
+                                </p> 
+          
+                                <a href="#" class="btn btn-outline-primary btn-sm"> 
+                                    Card link 
+                                </a> 
+                                <a href="#" class="btn btn-outline-secondary btn-sm"> 
+                                    <i class="far fa-heart"></i></a>
+                                    <br><br>
+                                {% if user.is_authenticated %}
+                                <form method="post">
+                                        {% csrf_token %}
+                                        <button class="btn btn-warning" type="submit" value="submit" ><a href="{% url 'update_url' i.id %}" style="color: black;">UPDATE</a></button> 
+                                        <button class="btn btn-danger" type="submit" value="submit" ><a href="{% url 'delete_url' i.id %}" style="color: black;">DELETE</a></button>
+                                </form> 
+                                {% endif %}
+                            </div> 
+                        </div> 
+                    </div> 
+                 
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}
