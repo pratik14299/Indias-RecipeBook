@@ -29,13 +29,15 @@
                                 <a href="#" class="btn btn-outline-secondary btn-sm"> 
                                     <i class="far fa-heart"></i></a>
                                     <br><br>
-                                {% if user.is_authenticated %}
+                                
                                 <form method="post">
+                                    {% if user.is_authenticated and i.user == user%}
                                         {% csrf_token %}
                                         <button class="btn btn-warning" type="submit" value="submit" ><a href="{% url 'update_url' i.id %}" style="color: black;">UPDATE</a></button> 
                                         <button class="btn btn-danger" type="submit" value="submit" ><a href="{% url 'delete_url' i.id %}" style="color: black;">DELETE</a></button>
+                                        {% endif %}
                                 </form> 
-                                {% endif %}
+                               
                             </div> 
                         </div> 
                     </div> 

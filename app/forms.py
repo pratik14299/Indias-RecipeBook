@@ -6,7 +6,8 @@ from .models import Recipe
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = '__all__'
+        fields = ['Title', 'Discreption','Category', 'image',]
+
 
         widgets = {
             'Title': forms.TextInput(attrs={'class': 'form-control'}),

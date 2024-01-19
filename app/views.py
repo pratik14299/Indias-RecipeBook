@@ -17,7 +17,8 @@ def CreateRecipe(request):
     if request.method == "POST":
         form = RecipeForm(request.POST,request.FILES) 
         if form.is_valid():
-            form.save()
+            form.instance.user = request.user
+            form.save() 
             return redirect("show_url")
         else:
             return HttpResponse(f"Error: {form.errors}")
